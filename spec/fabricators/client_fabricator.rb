@@ -1,4 +1,4 @@
 Fabricator(:client) do
-  username "MyString"
-  email    "MyString"
+  username {Faker::Name.name}
+  email    {Faker::Internet.email}
 end

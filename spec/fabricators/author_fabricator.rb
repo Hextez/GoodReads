@@ -1,4 +1,4 @@
 Fabricator(:author) do
-  name "MyString"
-  bio  "MyString"
+  name {Faker::Name.name}
+  bio  {Faker::Lorem.words(number: 30)}
 end

@@ -1,3 +1,4 @@
 Fabricator(:book) do
-  name "MyString"
+  name { Faker::Lorem.words(number: 4) }
+  author { Fabricate(:author) }
 end

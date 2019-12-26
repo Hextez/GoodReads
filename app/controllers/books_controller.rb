@@ -8,7 +8,11 @@ class BooksController < ApplicationController
 
   def create
     book = Book.create(book_param)
-    json_response(book)
+    if book.save
+      json_response(book, :created)
+    else
+      json_response({message: book.errors}, :bad_request)
+    end
   end
 
   def show
@@ -35,6 +39,7 @@ class BooksController < ApplicationController
   def book_param
     params.require(:book).permit(:name, :bio, :author_id)
   end
+  
   def set_book
     @book = Book.find(params[:id])
   end

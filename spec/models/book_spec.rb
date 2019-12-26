@@ -30,6 +30,14 @@ RSpec.describe Book, type: :model do
       book.valid?
       expect(book.errors[:name]).to include("can't be blank")
     end
+    it "is unique book name" do
+      book = Book.new(name: "BookOne", author: author)
+      expect(book).to be_valid
+      book.save
+      book2 = Book.new(name: "BookOne", author: author)
+      book2.valid?
+      expect(book2.errors[:name]).to include("already created")
+    end
   end
 
 end
