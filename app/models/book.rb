@@ -1,5 +1,6 @@
 class Book < ApplicationRecord
   belongs_to :author
-  validates :name, uniqueness: {message: "already created"}
+  has_many :comments, dependent: :destroy
+  validates :name, uniqueness: { message: "already created" }
   validates_presence_of :name, :author
 end
