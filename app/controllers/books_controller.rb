@@ -37,9 +37,9 @@ class BooksController < ApplicationController
 
   private
   def book_param
-    params.require(:book).permit(:name, :bio, :author_id)
+    params.require(:book).permit(:name, :description, :author_id)
   end
-  
+
   def set_book
     @book = Book.find(params[:id])
   end
